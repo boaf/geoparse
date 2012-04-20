@@ -1,18 +1,17 @@
 # Copyright (c) Paul Tagliamonte, 2012, under the terms and conditions of the
 # COPYING file.
 
-import datetime as dt
 from geoparse.point import Point
 from geoparse.defuzz import defuzz_raw, defuzz_feet, defuzz_meters, \
                             rolling_average
 
 
 d = 1234567890
-delt = 3 # if it's outside this, per second.
+delt = 3  # if it's outside this, per second.
 
 
 def test_defuzz_single():
-    """ Test a single defuzz """
+    """Test a single defuzz"""
     dataset = [
         Point(0, 0, d),
         Point(1, 1, d + 1),
@@ -30,7 +29,7 @@ def test_defuzz_single():
 
 
 def test_defuzz_double():
-    """ Test a double-defuzz """
+    """Test a double-defuzz"""
     dataset = [
         Point(0, 0, d),
         Point(1, 1, d + 1),
@@ -66,9 +65,8 @@ def test_defuzz_double():
     assert defuzz_meters(dataset, delt) == foo2
 
 
-
 def test_rolling_average():
-    """ Test to make sure the avgr works """
+    """Test to make sure the avgr works"""
     dataset = [
         Point(0, 0, d),
         Point(1, 1, d),

@@ -12,7 +12,7 @@ pd2 = PointDelta(Point(0, 0, d), Point(5, 12, d))
 
 
 def test_create():
-    """ Make sure everything's where we expect it to be. """
+    """Make sure everything's where we expect it to be."""
     point = Point(1, 2, d)
     assert point.lat == 1
     assert point.lon == 2
@@ -27,7 +27,7 @@ def test_point_eq():
 
 
 def test_subtract():
-    """ Test to make sure subtracting two points works right """
+    """Test to make sure subtracting two points works right"""
     point1 = Point(0.003, 0.004, d)
     point2 = Point(0.000, 0.000, d)
     assert float(point1 - point2) == 0.005
@@ -35,41 +35,47 @@ def test_subtract():
 
 
 def test_delta_lt():
-    """ Ensure less then operator works correctly with numbers & other PDs """
+    """Ensure less then operator works correctly with numbers & other PDs"""
     assert pd1 < pd2
     assert pd1 < 6
     assert pd2 < 14
 
+
 def test_delta_gt():
-    """ Ensure greater then operator works correctly with numbers & other PDs """
+    """Ensure greater then operator works correctly with numbers & other PDs"""
     assert pd2 > pd1
     assert pd1 > 4
     assert pd2 > 12
 
+
 def test_delta_eq():
-    """ Ensure equel operator works correctly with numbers & other PDs """
+    """Ensure equel operator works correctly with numbers & other PDs"""
     assert pd1 == 5
     assert pd2 == 13
     assert pd1 == PointDelta(Point(0, 0, d), Point(3, 4, d))
     assert pd2 == PointDelta(Point(0, 0, d), Point(5, 12, d))
 
+
 def test_delta_ne():
-    """ Ensure not equel operator works correctly with numbers & other PDs """
+    """Ensure not equel operator works correctly with numbers & other PDs"""
     assert pd1 != pd2
     assert pd1 != None
     assert pd2 != 2
 
+
 def test_delta_le():
-    """ Ensure lt or eq operator works correctly with numbers & other PDs """
+    """Ensure lt or eq operator works correctly with numbers & other PDs"""
     assert pd1 == 5
     assert pd1 <= 5
     assert pd1 <= 6
 
+
 def test_delta_ge():
-    """ Ensure gt or eq operator works correctly with numbers & other PDs """
+    """Ensure gt or eq operator works correctly with numbers & other PDs"""
     assert pd1 == 5
     assert pd1 >= 5
     assert pd1 >= 4
+
 
 def test_delta_convert():
     p1 = Point(50.0359, -5.4253, d)

@@ -1,13 +1,14 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 # Copyright (c) Paul Tagliamonte, 2012, under the terms and conditions of the
 # COPYING file.
 
+import pdb
 import json
 import sys
 
 from geoparse.point import Point
-from geoparse.split import split_raw
-from geoparse.defuzz import defuzz_feet
+from geoparse.split import split_raw, get_shingles
+from geoparse.defuzz import defuzz_feet, rolling_average
 
 lastPoint = None
 lines = json.load(open(sys.argv[1], 'r'))
@@ -19,4 +20,8 @@ dataset = defuzz_feet(dataset, 300)  # FPS, btw.
 print len(dataset)
 
 for item in split_raw(dataset, 40):
-    print item['data'][0].time
+    if item['data']:  # first item's data was empty for some reason...
+        print item['data'][0].time, item['type']
+
+# for item in get_shingles(dataset, 3):
+#     print rolling_average(item, len(item))

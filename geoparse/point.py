@@ -80,8 +80,8 @@ class Point:
         return (self - other) != 0 or (self.time != other.time)
 
     def __repr__(self):
-       return "<Point object at %s, lat: %s, lon: %s>" % (
+        return "<Point object at %s, lat: %s, lon: %s>" % (
            self.time.strftime('%Y-%m-%d %H:%M:%S'),
            self.lat,
            self.lon
-       )
+        )
